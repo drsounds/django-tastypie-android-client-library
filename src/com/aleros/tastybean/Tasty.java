@@ -8,7 +8,7 @@ import org.json.JSONException;
 public class Tasty {
 	public static TastyEndpoint DefaultEndpoint;
 	public static void init(String appId, String appSecret, String endpoint, String version) {
-		DefaultEndpoint = new TastyEndpoint(version, appId, appSecret, endpoint);
+		DefaultEndpoint = new TastyRESTEndpoint(version, appId, appSecret, endpoint);
 		
 	}
 	public static TastyUser login(String username, String password, String scope) throws ClientProtocolException, IOException, JSONException {

@@ -11,19 +11,17 @@ import android.os.AsyncTask;
 
 public class TastyQuery extends Hashtable<String, String> {
 	private TastyEndpoint endpoint = Tasty.DefaultEndpoint;
-	private String resource;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2557382001852061257L;
 	public TastyQuery(String resource) {
-		this.resource = resource;
 	}
 	public TastyQuery(String resource, TastyEndpoint endpoint) {
 		this.endpoint = endpoint;
-		this.resource = resource;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public TastyResult get() throws ClientProtocolException, IOException, JSONException {
 		String query = "";
 		while(this.keys().hasMoreElements()) {
@@ -32,10 +30,10 @@ public class TastyQuery extends Hashtable<String, String> {
 			query += key + "=" + URLEncoder.encode(value) + "&";
 			
 		}
-		final String query2 = query;
 		TastyResult result = endpoint.get("product", query);
 		return result;
 	}
+	@SuppressWarnings("deprecation")
 	public void getInBackground(final String id, final FindCallback callback) {
 		String query = "";
 		while(this.keys().hasMoreElements()) {
@@ -74,6 +72,7 @@ public class TastyQuery extends Hashtable<String, String> {
 			}
 			
 		};
+		task.execute();
 	}
 	public void whereEqualTo(String key, String val) {
 		this.put(key, val);
