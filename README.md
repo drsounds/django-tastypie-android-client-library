@@ -7,23 +7,23 @@ A Parse like android library for interacting with tastypie django api
 
 1. Init the library
   
-  Tasty.init("USERNAME_OR_APP_NAME", "YOUR_API_KEY", "http://url.to/api", "v1");	
+      Tasty.init("USERNAME_OR_APP_NAME", "YOUR_API_KEY", "http://url.to/api", "v1");	
 
 2. Get some data
 
-  TastyQuery query = new TastyQuery("product");
+      TastyQuery query = new TastyQuery("product");
   
 3. POST data
 
-  TastyObject order = new TastyObject("order");
+      TastyObject order = new TastyObject("order");
     	
-  TastyObject orderline = new TastyObject("orderline");
-  orderline.put("product", "/api/v1/product/1/");
-  orderline.put("sku", "/api/v1/sku/test1/");
-  orderline.put("count", 1);
-  orderline.put("price", 1000);
-  orderline.put("subtotal", 1000);
-  orderline.put("merchant", "/api/v1/merchant/artistconnector/");
+      TastyObject orderline = new TastyObject("orderline");
+      orderline.put("product", "/api/v1/product/1/");
+      orderline.put("sku", "/api/v1/sku/test1/");
+      orderline.put("count", 1);
+      orderline.put("price", 1000);
+      orderline.put("subtotal", 1000);
+      orderline.put("merchant", "/api/v1/merchant/artistconnector/");
     	
     	List<TastyObject> orderlines = new ArrayList<TastyObject>();
     	orderlines.add(orderline);
