@@ -141,9 +141,9 @@ public class TastyRESTEndpoint extends TastyEndpoint {
         return resultObject;
 	}
 	
-	public TastyResult get(String resource, String query) throws ClientProtocolException, IOException, JSONException {
+	public TastyResult get(String resource, String id, String query) throws ClientProtocolException, IOException, JSONException {
 		String result = "";
-		String url = this.getUrl(resource, null);
+		String url = this.getUrl(resource, id);
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpGet httpGet = new HttpGet(url);
 		

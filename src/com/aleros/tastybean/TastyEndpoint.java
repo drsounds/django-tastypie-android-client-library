@@ -67,7 +67,7 @@ public abstract class TastyEndpoint {
 	public abstract TastyResult delete(String resource, TastyObject object) throws ClientProtocolException, IOException, JSONException;
 	public abstract TastyObject post(String resource, TastyObject object) throws ClientProtocolException, IOException, JSONException;
 	public abstract TastyResult put(String resource, TastyObject object) throws ClientProtocolException, IOException, JSONException;
-	public abstract TastyResult get(String resource, String query) throws ClientProtocolException, IOException, JSONException;
+	public abstract TastyResult get(String resource, String id, String query) throws ClientProtocolException, IOException, JSONException;
 
 	public String getEndpoint() {
 		return endpoint;
