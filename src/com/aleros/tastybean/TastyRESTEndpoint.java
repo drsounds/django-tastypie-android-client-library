@@ -24,7 +24,7 @@ public class TastyRESTEndpoint extends TastyEndpoint {
 	public TastyUser me() throws ClientProtocolException, IOException, JSONException {
 		String result = "";
 		String url = this.getEndpoint() + "/" + this.getVersion() + "/me/?format=json&username=" + getAppId() + "&api_key=" + this.getAppSecret() + "&bearer_token=" + getAccessToken().getAccessToken();
-	
+		
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpGet httpPost = new HttpGet(url);
 		HttpResponse httpResponse = httpClient.execute(httpPost);
@@ -39,11 +39,13 @@ public class TastyRESTEndpoint extends TastyEndpoint {
 	}
 	public TastyAccessToken login(String username, String password, String scope) throws ClientProtocolException, IOException {
 		String result = "";
-		String url = this.getEndpoint() + "/oauth2/access_token";
+		String url = this.getEndpoint().replace("/api", "") + "/oauth2/access_token";
 		
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpPost httpPost = new HttpPost(url);
-		StringEntity se = new StringEntity("client_id=" + this.getAppId() + "&client_secret=" + this.getAppSecret() + "&scope=" + scope);
+		httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
+		String data = "client_id=" + this.getAppId() + "&client_secret=" + this.getAppSecret() + "&scope=" + scope + "&grant_type=password&username=" + username + "&password=" + password;
+		StringEntity se = new StringEntity(data);
 		httpPost.setEntity(se);
 
         HttpResponse httpResponse = httpClient.execute(httpPost);

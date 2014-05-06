@@ -14,7 +14,7 @@ public class TastyAccessToken {
 	}
 	
 	public TastyAccessToken(JSONObject obj) throws JSONException {
-		this.accessToken = obj.getString("accessToken");
+		this.accessToken = obj.getString("access_token");
 		this.expires = obj.getInt("expires_in");
 		this.refreshToken = obj.getString("refresh_token");
 		
